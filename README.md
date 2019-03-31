@@ -13,3 +13,4 @@ First run :
    Right click on the "VisualizationRun" class and 'Run file' and that's it !!
    
    
+Christophe Bordier, France
