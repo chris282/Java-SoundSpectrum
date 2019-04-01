@@ -12,5 +12,10 @@ First run :
     
    Right click on the "VisualizationRun" class and 'Run file' and that's it !!
    
+   Functionallities TODO : 
+     - For a given windows path : Read every mp3 in a specified folder in a row
+     - Change the camera position in order to improve scene display
+     - Apply a Logarithmic or Square root scale on data measures, on order to improve scene display
+   
    
 Christophe Bordier, France
