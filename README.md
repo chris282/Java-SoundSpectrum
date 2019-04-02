@@ -1,7 +1,7 @@
 Welcome to my Sound Spectrum project, based on the Minim Api !
 
 This is a homemade project done for fun purpose, so customize and extend it if you want !
-Main features : high performance DFT transformation, with 4 visualizations at the same time.
+Main features : high performance DFT transformation, with 4 visualizations types at the same time.
 
 I recommend using Netbeans for this project, wich work pretty well.
 
