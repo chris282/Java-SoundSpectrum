@@ -13,7 +13,7 @@ First run :
 Functionallities TODO (HELP and contributors WANTED!) : 
 - For a given windows path : Read every mp3 in a specified folder in a row
 - Change the camera position in order to improve scene display (like in the picture "3D-Spectrum-of-Sound.jpg")
-- Apply a Logarithmic (or Square root) scale on data measures, in order to improve scene display
+- Apply a Logarithmic (or Square root) scale on data measures, in order to improve scene display (highlight high frequency measures and minimize low frequency measures)
    
    Demo : https://www.youtube.com/watch?v=VxYBAFk8pIk
    
