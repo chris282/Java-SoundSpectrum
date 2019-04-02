@@ -17,4 +17,6 @@ Functionallities TODO (HELP and contributors WANTED!) :
    
    Demo : https://www.youtube.com/watch?v=VxYBAFk8pIk
    
+Processing libs forums : https://discourse.processing.org/t/sharing-minimaslit-project-to-do-a-3d-sound-spectrum-visualiazer/9876
+
 Christophe Bordier, France
