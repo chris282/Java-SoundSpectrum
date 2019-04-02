@@ -15,4 +15,6 @@ Functionallities TODO :
 - Change the camera position in order to improve scene display (like in the picture "3D-Spectrum-of-Sound.jpg")
 - Apply a Logarithmic (or Square root) scale on data measures, in order to improve scene display
    
+   Demo : https://www.youtube.com/watch?v=VxYBAFk8pIk
+   
 Christophe Bordier, France
