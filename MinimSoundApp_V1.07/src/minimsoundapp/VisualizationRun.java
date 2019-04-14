@@ -1,6 +1,13 @@
 
 package minimsoundapp;
 
+/**
+ * Proudly brought to you by Christophe Bordier 
+ * https://github.com/chris282/Java-SoundSpectrum
+ * 
+ * Please help me by contributing to the same project in Javascript light client with Angular and ThreeJs !
+ * https://github.com/chris282/JS-SoundSpectrum
+ */
 public class VisualizationRun {
     
     /**
@@ -14,8 +21,8 @@ public class VisualizationRun {
             
     public static final  String activeFile=mp3file3;
     public static void main(String args[]){   
-        //FullScreenVisualizationDisplay();
-       FourWindowsVisualizationDisplay();
+        FullScreenVisualizationDisplay();
+       //FourWindowsVisualizationDisplay();
     }   
     
    public static void FourWindowsVisualizationDisplay(){

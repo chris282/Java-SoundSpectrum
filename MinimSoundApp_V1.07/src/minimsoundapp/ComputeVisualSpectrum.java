@@ -8,6 +8,13 @@ import processing.core.PApplet;
 import static processing.core.PApplet.map;
 import static processing.core.PConstants.P3D;
 
+/**
+ * Proudly brought to you by Christophe Bordier 
+ * https://github.com/chris282/Java-SoundSpectrum
+ * 
+ * Please help me by contributing to the same project in Javascript light client with Angular and ThreeJs !
+ * https://github.com/chris282/JS-SoundSpectrum
+ */
 public abstract class ComputeVisualSpectrum extends PApplet {
     
     float x,y,z;
@@ -69,9 +76,7 @@ public abstract class ComputeVisualSpectrum extends PApplet {
     
     public final void beforeDrawingMatrix(){
         background(0);
-        directionalLight(250,250,250,-100,-100,50);
-        //directionalLight(150,150,1,sin(radians(frameCount)),cos(radians(frameCount)),1);
-        ambientLight(80,80,80);
+        ambientLight(210,210,210);
         if(fullScreen){
             camera((6000),y,-2000,0,y,0,0,0,1);
         }else {

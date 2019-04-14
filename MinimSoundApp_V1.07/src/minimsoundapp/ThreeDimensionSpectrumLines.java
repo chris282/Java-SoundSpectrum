@@ -8,6 +8,13 @@ import processing.core.*;
 import processing.core.PApplet;
 import static processing.core.PApplet.map;
 
+/**
+ * Proudly brought to you by Christophe Bordier 
+ * https://github.com/chris282/Java-SoundSpectrum
+ * 
+ * Please help me by contributing to the same project in Javascript light client with Angular and ThreeJs !
+ * https://github.com/chris282/JS-SoundSpectrum
+ */
 public class ThreeDimensionSpectrumLines extends ComputeVisualSpectrum {
    
     

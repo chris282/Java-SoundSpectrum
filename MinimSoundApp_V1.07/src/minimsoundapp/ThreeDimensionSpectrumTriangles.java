@@ -10,6 +10,13 @@ import static processing.core.PApplet.map;
 import static processing.core.PConstants.CLOSE;
 import static processing.core.PConstants.TRIANGLE_STRIP;
 
+/**
+ * Proudly brought to you by Christophe Bordier 
+ * https://github.com/chris282/Java-SoundSpectrum
+ * 
+ * Please help me by contributing to the same project in Javascript light client with Angular and ThreeJs !
+ * https://github.com/chris282/JS-SoundSpectrum
+ */
 public class ThreeDimensionSpectrumTriangles extends ComputeVisualSpectrum {
     
     @Override 
