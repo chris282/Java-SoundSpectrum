@@ -1,6 +1,6 @@
 Welcome to my Sound Spectrum project, based on the Minim Api !
 
-This is a homemade project done for fun purpose, so customize and extend it if you want !
+This is a homemade project done for fun purpose, so customize and extend it if you want ! 
 Main features : high performance DFT transformation, with 4 visualizations types at the same time.
 
 I recommend using Netbeans for this project, wich work pretty well.
@@ -18,5 +18,5 @@ Functionallities TODO (HELP and contributors WANTED!) :
    Demo : https://www.youtube.com/watch?v=VxYBAFk8pIk
    
 Processing libs forums : https://discourse.processing.org/t/sharing-minimaslit-project-to-do-a-3d-sound-spectrum-visualiazer/9876
-
+See this documentation page : http://code.compartmental.net/minim/javadoc/ddf/minim/analysis/FFT.html
 Christophe Bordier, France
