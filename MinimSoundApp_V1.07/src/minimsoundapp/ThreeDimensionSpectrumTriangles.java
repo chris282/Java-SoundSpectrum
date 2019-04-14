@@ -10,10 +10,6 @@ import static processing.core.PApplet.map;
 import static processing.core.PConstants.CLOSE;
 import static processing.core.PConstants.TRIANGLE_STRIP;
 
-/**
- *
- * @author Chris
- */
 public class ThreeDimensionSpectrumTriangles extends ComputeVisualSpectrum {
     
     @Override 

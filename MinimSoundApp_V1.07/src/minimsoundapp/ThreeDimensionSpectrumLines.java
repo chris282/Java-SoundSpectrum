@@ -1,8 +1,4 @@
-/*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
-*/
+
 package minimsoundapp;
 
 import ddf.minim.analysis.*;
@@ -13,8 +9,8 @@ import processing.core.PApplet;
 import static processing.core.PApplet.map;
 
 public class ThreeDimensionSpectrumLines extends ComputeVisualSpectrum {
+   
     
-     
     @Override
     public void drawMatrix(){
         int fftLogSpectrumTotalLength = fftLog.avgSize();

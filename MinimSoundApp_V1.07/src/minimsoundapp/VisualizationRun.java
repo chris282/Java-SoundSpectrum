@@ -1,14 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package minimsoundapp;
 
-/**
- *
- * @author formation
- */
 public class VisualizationRun {
     
     /**
@@ -20,9 +12,13 @@ public class VisualizationRun {
     public static final  String mp3file3="C:\\Users\\Chris\\Documents\\DevPerso\\SoundSpectrumProjectMinimAndJavaFX\\resources\\NeverComeDownPRESIDENTIALREMASTER.mp3";
             
             
-    public static final  String activeFile=mp3file1;
+    public static final  String activeFile=mp3file3;
     public static void main(String args[]){   
-        
+        //FullScreenVisualizationDisplay();
+       FourWindowsVisualizationDisplay();
+    }   
+    
+   public static void FourWindowsVisualizationDisplay(){
         TwoDimensionSpectrum twoDimensionSpectrum = new TwoDimensionSpectrum();
         twoDimensionSpectrum.main(new String[] { "minimsoundapp.TwoDimensionSpectrum" });
         //
@@ -34,7 +30,13 @@ public class VisualizationRun {
         //
         ThreeDimensionSpectrumLines threeDimensionSpectrum = new ThreeDimensionSpectrumLines();
         threeDimensionSpectrum.main(new String[] { "minimsoundapp.ThreeDimensionSpectrumLines" });
-    }   
-    
+   }
    
+   public static void FullScreenVisualizationDisplay(){
+
+        ThreeDimensionSpectrumTriangles threeDimensionSpectrumTriangles = new ThreeDimensionSpectrumTriangles();
+        threeDimensionSpectrumTriangles.setFullScreen(Boolean.TRUE);
+        threeDimensionSpectrumTriangles.main(new String[] { "minimsoundapp.ThreeDimensionSpectrumTriangles" });
+       
+   }
 }

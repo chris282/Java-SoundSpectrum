@@ -5,12 +5,14 @@ import static processing.core.PApplet.map;
 
 public class TwoDimensionSpectrum extends ComputeVisualSpectrum {
     
+    /**
+     * Only the latest measure is displayed on screen : single line
+     */
     @Override
     public void drawMatrix(){
         int fftLogSpectrumTotalLength = fftLog.avgSize();
         float saturation = 1.0f; //saturation
         float brightness = 1f; //brightness
-        //n'afficher que la tempmatrix
         for(int i=0; i<(tempMatrix.length-1); i++){
             float color_input = (tempMatrix[i].x);
             float color_rescale = map(color_input, 0,fftLogSpectrumTotalLength*X_AXIS_SCALE, 0, 1);
