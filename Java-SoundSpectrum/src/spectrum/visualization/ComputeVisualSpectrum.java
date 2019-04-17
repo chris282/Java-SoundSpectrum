@@ -34,12 +34,16 @@ public abstract class ComputeVisualSpectrum extends PApplet {
     float Z_AXIS_SCALE=1.0f;
     PVector[] tempMatrix;
     PVector[] fullMatrix;
-    float HIGH_FREQUENCY_SCALE=7.0f;
-    float MEDIUM_FREQUENCY_SCALE=1.3f;
-    float LOW_FREQUENCY_SCALE=0.35f;
+    //Manual Frequency amplitude rescale
+    boolean MANUAL_FREQUENCY_RESCALE=true;
+    float HIGH_FREQUENCY_SCALE=3.5f;
+    float MEDIUM_FREQUENCY_SCALE=1.25f;
+    float LOW_FREQUENCY_SCALE=0.18f;
     //TODO : emphasize on voice frequency range
     float MEDIUM_FREQUENCY_UPPER_BOUND=3400;
     float LOW_FREQUENCY_UPPER_BOUND=300;
+    //
+    
     static VisualizationMode visualizationMode=VisualizationMode.FULLSCREEN; //default is fullScreen visualization
     
     @Override
@@ -58,10 +62,10 @@ public abstract class ComputeVisualSpectrum extends PApplet {
             case MEDIUM:
                 System.out.println("Setting up spectrum visualization in SMALL mode");
                 size(900, 480, P3D);
-                X_AXIS_SCALE=1.2f;
-                Y_AXIS_SCALE=10;
-                Z_AXIS_SCALE=9.0f;
-                TOTAL_TRACE_LENGTH=500;
+                X_AXIS_SCALE=1.5f;
+                Y_AXIS_SCALE=25.0f;
+                Z_AXIS_SCALE=15f;
+                TOTAL_TRACE_LENGTH=400;
                 logAveragesMinBandwidth=100;
                 logAveragesBandsPerOctave=6;
                 System.out.println("TOTAL_TRACE_LENGTH="+TOTAL_TRACE_LENGTH);
@@ -72,8 +76,8 @@ public abstract class ComputeVisualSpectrum extends PApplet {
                 System.out.println("Setting up spectrum visualization in SMALL mode");
                 size(700, 360, P3D);
                 X_AXIS_SCALE=1.5f;
-                Y_AXIS_SCALE=10.0f;
-                Z_AXIS_SCALE=14.0f;
+                Y_AXIS_SCALE=25.0f;
+                Z_AXIS_SCALE=16.5f;
                 TOTAL_TRACE_LENGTH=300;
                 logAveragesMinBandwidth=100;
                 logAveragesBandsPerOctave=6;
@@ -178,20 +182,22 @@ public abstract class ComputeVisualSpectrum extends PApplet {
             x = (float) (i*fftLog.avgSize()*X_AXIS_SCALE);
             //System.out.println("x = "+x);
             y = (frameCount)*Y_AXIS_SCALE;
-            //0; 1000; 1400 ;2700
+            z=(-fftLog.getAvg(i)*Z_AXIS_SCALE);
             float frequency=fftLog.getAverageCenterFrequency(i);
             //System.out.println("frequency = "+frequency);
             float freqAmplitude=fftLog.getFreq(fftLog.getAverageCenterFrequency(i));
             //System.out.println("freqAmplitude="+freqAmplitude);
-            if(frequency<LOW_FREQUENCY_UPPER_BOUND){
-                //Low frequencies are manually decreased
-                z =(float) ((-fftLog.getAvg(i)*Z_AXIS_SCALE)*LOW_FREQUENCY_SCALE);
-            } else if(frequency>LOW_FREQUENCY_UPPER_BOUND && x<MEDIUM_FREQUENCY_UPPER_BOUND) {
-                //Medium frequencies are manually increase (a bit)
-                z =(float) ((-fftLog.getAvg(i)*Z_AXIS_SCALE)*MEDIUM_FREQUENCY_SCALE);
-            } else {
-                //High frequencies are manually increased
-                z =(float) ((-fftLog.getAvg(i)*Z_AXIS_SCALE)*HIGH_FREQUENCY_SCALE);
+            if(MANUAL_FREQUENCY_RESCALE){
+                if(frequency<LOW_FREQUENCY_UPPER_BOUND){
+                    //Low frequencies are manually decreased
+                    z =(float) z*LOW_FREQUENCY_SCALE;
+                } else if(frequency>LOW_FREQUENCY_UPPER_BOUND && frequency<MEDIUM_FREQUENCY_UPPER_BOUND) {
+                    //Medium frequencies are manually increase (a bit)
+                    z =(float) z*MEDIUM_FREQUENCY_SCALE;
+                } else if(frequency > MEDIUM_FREQUENCY_UPPER_BOUND){
+                    //High frequencies are manually increased
+                    z =(float) z*HIGH_FREQUENCY_SCALE;
+                }
             }
             //System.out.println("i = "+i);
             //System.out.println("fftLog.getAvg(i) = "+fftLog.getAvg(i));
