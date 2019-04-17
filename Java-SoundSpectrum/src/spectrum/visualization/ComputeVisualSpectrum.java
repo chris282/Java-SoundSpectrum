@@ -34,6 +34,8 @@ public abstract class ComputeVisualSpectrum extends PApplet {
     float Z_AXIS_SCALE=1.0f;
     PVector[] tempMatrix;
     PVector[] fullMatrix;
+    float LOW_FREQUENCY_SCALE=0.5f;
+    float HIGH_FREQUENCY_SCALE=2.2f;
     static VisualizationMode visualizationMode=VisualizationMode.FULLSCREEN; //default is fullScreen visualization
     
     @Override
@@ -54,7 +56,7 @@ public abstract class ComputeVisualSpectrum extends PApplet {
                 size(900, 480, P3D);
                 X_AXIS_SCALE=1.2f;
                 Y_AXIS_SCALE=10;
-                Z_AXIS_SCALE=6.0f;
+                Z_AXIS_SCALE=7.0f;
                 TOTAL_TRACE_LENGTH=500;
                 logAveragesMinBandwidth=100;
                 logAveragesBandsPerOctave=6;
@@ -168,13 +170,16 @@ public abstract class ComputeVisualSpectrum extends PApplet {
      * Fill the TEMP array with brand new values
      */
     protected final void fillTempMatrix(){
-        for(int i = 0; i < fftLog.avgSize(); i++){ //i va de 0 a 40
+        for(int i = 0; i < fftLog.avgSize(); i++){
             x = (float) (i*fftLog.avgSize()*X_AXIS_SCALE);
             y = (frameCount)*Y_AXIS_SCALE;
-            z =(-fftLog.getAvg(i)*Z_AXIS_SCALE);
-            //System.out.println("x="+x);
-            //System.out.println("y="+y);
-            //System.out.println("z="+z);
+            if(i>fftLog.avgSize()*4/5){
+                //High frequency are manually increased
+                z =(float) ((-fftLog.getAvg(i)*Z_AXIS_SCALE)*HIGH_FREQUENCY_SCALE);
+            } else {
+                //Low frequency are manually decreased
+                z =(float) ((-fftLog.getAvg(i)*Z_AXIS_SCALE)*LOW_FREQUENCY_SCALE);
+            }
             tempMatrix[i].x=x;
             tempMatrix[i].y=y;
             tempMatrix[i].z=z;
@@ -186,17 +191,17 @@ public abstract class ComputeVisualSpectrum extends PApplet {
      * https://stackoverflow.com/questions/47712818/converting-linear-scale-to-log-scale-in-java
      */
     /**
-   * Given an index and the total number of entries, return the
-   * log-scaled value.
-   */
+     * Given an index and the total number of entries, return the
+     * log-scaled value.
+     */
     /**
-  logScale: function(index, total, opt_base) {
-    var base = opt_base || 2;
-    var logmax = this.logBase(total + 1, base);
-    var exp = logmax * index / total;
-    return Math.round(Math.pow(base, exp) - 1);
-  },
-  **/
+     * logScale: function(index, total, opt_base) {
+     * var base = opt_base || 2;
+     * var logmax = this.logBase(total + 1, base);
+     * var exp = logmax * index / total;
+     * return Math.round(Math.pow(base, exp) - 1);
+     * },
+     **/
     //int intResult = (int) Math.pow(2, 3);
     //wil be 8
     
