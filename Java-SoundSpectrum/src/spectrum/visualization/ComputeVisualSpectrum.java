@@ -35,7 +35,7 @@ public abstract class ComputeVisualSpectrum extends PApplet {
     PVector[] tempMatrix;
     PVector[] fullMatrix;
     //Manual Frequency amplitude rescale
-    boolean MANUAL_FREQUENCY_RESCALE=true;
+    static boolean MANUAL_FREQUENCY_RESCALE=true;
     float HIGH_FREQUENCY_SCALE=3.5f;
     float MEDIUM_FREQUENCY_SCALE=1.25f;
     float LOW_FREQUENCY_SCALE=0.18f;
@@ -46,16 +46,17 @@ public abstract class ComputeVisualSpectrum extends PApplet {
     
     static VisualizationMode visualizationMode=VisualizationMode.FULLSCREEN; //default is fullScreen visualization
     
+    //TODO : more color saturation and brightness in high amplitudes 
     @Override
     public final void settings() {
         switch (visualizationMode){
             case FULLSCREEN:
                 System.out.println("Setting up spectrum visualization in FULLSCREEN mode");
                 size(1920, 1080,P3D);
-                X_AXIS_SCALE=1.0f;
-                Y_AXIS_SCALE=3;
-                Z_AXIS_SCALE=25;
-                TOTAL_TRACE_LENGTH=800;
+                X_AXIS_SCALE=0.35f;
+                Y_AXIS_SCALE=18;
+                Z_AXIS_SCALE=12.0f;
+                TOTAL_TRACE_LENGTH=400;
                 logAveragesMinBandwidth=100;
                 logAveragesBandsPerOctave=12;
                 break;
@@ -133,7 +134,7 @@ public abstract class ComputeVisualSpectrum extends PApplet {
         directionalLight(500,500,500,-100,-100,50);
         switch (visualizationMode){
             case FULLSCREEN:
-                camera((6000),y,-2000,0,y,0,0,0,1);
+                camera(1500,(y+1100),-1100,1500,y-(TOTAL_TRACE_LENGTH*4),0,0,0,1);
                 break;
             case MEDIUM:
                 camera(1400,(y+1100),-1100,1400,y-(TOTAL_TRACE_LENGTH*4),0,0,0,1);
@@ -236,5 +237,10 @@ public abstract class ComputeVisualSpectrum extends PApplet {
     public static void setVisualizationMode(VisualizationMode _visualizationMode) {
         visualizationMode = _visualizationMode;
     }
+
+    public static void setMANUAL_FREQUENCY_RESCALE( boolean MANUAL_FREQUENCY_RESCALE) {
+        ComputeVisualSpectrum.MANUAL_FREQUENCY_RESCALE = MANUAL_FREQUENCY_RESCALE;
+    }
+    
     
 }
