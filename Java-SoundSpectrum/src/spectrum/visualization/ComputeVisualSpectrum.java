@@ -50,14 +50,17 @@ public abstract class ComputeVisualSpectrum extends PApplet {
                 logAveragesBandsPerOctave=12;
                 break;
             case MEDIUM:
-                System.out.println("Setting up spectrum visualization in MEDIUM mode");
-                size(900, 600, P3D);
-                X_AXIS_SCALE=1.0f;
-                Y_AXIS_SCALE=8;
-                Z_AXIS_SCALE=7;
-                TOTAL_TRACE_LENGTH=300;
+                System.out.println("Setting up spectrum visualization in SMALL mode");
+                size(900, 480, P3D);
+                X_AXIS_SCALE=1.2f;
+                Y_AXIS_SCALE=10;
+                Z_AXIS_SCALE=6.0f;
+                TOTAL_TRACE_LENGTH=500;
                 logAveragesMinBandwidth=100;
                 logAveragesBandsPerOctave=6;
+                System.out.println("TOTAL_TRACE_LENGTH="+TOTAL_TRACE_LENGTH);
+                System.out.println("logAveragesMinBandwidth="+logAveragesMinBandwidth);
+                System.out.println("logAveragesBandsPerOctave="+logAveragesBandsPerOctave);
                 break;
             case SMALL:
                 System.out.println("Setting up spectrum visualization in SMALL mode");
@@ -116,12 +119,14 @@ public abstract class ComputeVisualSpectrum extends PApplet {
     
     public final void beforeDrawingMatrix(){
         background(0);
-        ambientLight(210,210,210);
+        ambientLight(100,100,100);
+        directionalLight(500,500,500,-100,-100,50);
         switch (visualizationMode){
             case FULLSCREEN:
                 camera((6000),y,-2000,0,y,0,0,0,1);
                 break;
             case MEDIUM:
+                camera(1400,(y+1100),-1100,1400,y-(TOTAL_TRACE_LENGTH*4),0,0,0,1);
                 break;
             case SMALL:
                 camera(1500,(y+1100),-1100,1500,y-(TOTAL_TRACE_LENGTH*4),0,0,0,1);
@@ -167,7 +172,7 @@ public abstract class ComputeVisualSpectrum extends PApplet {
             x = (float) (i*fftLog.avgSize()*X_AXIS_SCALE);
             y = (frameCount)*Y_AXIS_SCALE;
             z =(-fftLog.getAvg(i)*Z_AXIS_SCALE);
-            System.out.println("x="+x);
+            //System.out.println("x="+x);
             //System.out.println("y="+y);
             //System.out.println("z="+z);
             tempMatrix[i].x=x;
@@ -175,6 +180,25 @@ public abstract class ComputeVisualSpectrum extends PApplet {
             tempMatrix[i].z=z;
         }
     }
+    
+    /**
+     * TODO do a log scale on Z compute
+     * https://stackoverflow.com/questions/47712818/converting-linear-scale-to-log-scale-in-java
+     */
+    /**
+   * Given an index and the total number of entries, return the
+   * log-scaled value.
+   */
+    /**
+  logScale: function(index, total, opt_base) {
+    var base = opt_base || 2;
+    var logmax = this.logBase(total + 1, base);
+    var exp = logmax * index / total;
+    return Math.round(Math.pow(base, exp) - 1);
+  },
+  **/
+    //int intResult = (int) Math.pow(2, 3);
+    //wil be 8
     
     /**
      * Update the FULL array by

@@ -22,7 +22,7 @@ public class ThreeDimensionSpectrumLines extends ComputeVisualSpectrum {
     public void drawMatrix(){
         int fftLogSpectrumTotalLength = fftLog.avgSize();
         float saturation = 1.0f; //saturation
-        float brightness = 1f; //brightness
+        float brightness = 0.9f; //brightness
         for(int i=0; i<(fullMatrix.length-1); i++){
             float color_input = (fullMatrix[i].x);
             float color_rescale = map(color_input, 0,fftLogSpectrumTotalLength*fftLog.avgSize()*X_AXIS_SCALE, 0, 1);

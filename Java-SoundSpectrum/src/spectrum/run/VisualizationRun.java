@@ -34,13 +34,13 @@ public class VisualizationRun {
 		String targetPlaylistFolderName=windowsMusicFolder+windowsDirectorySeparator+myFolder;
 		List<String> playableMusicFileList=musicPlayList(targetPlaylistFolderName);
 		activeFile=playableMusicFileList.get(0);
-		//simpleDisplay();
+		simpleDisplay();
 		//fourWindowsVisualizationDisplay();
-		smallFourWindowsVisualizationDisplay();
+		//smallFourWindowsVisualizationDisplay();
 	}   
 
 	public static void simpleDisplay(){
-		ComputeVisualSpectrum.setVisualizationMode(VisualizationMode.SMALL);
+		ComputeVisualSpectrum.setVisualizationMode(VisualizationMode.MEDIUM);
 		ThreeDimensionSpectrumTriangles.main(new String[] { "spectrum.visualization.ThreeDimensionSpectrumTriangles" });
 	}
 	
