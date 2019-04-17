@@ -3,12 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package minimsoundapp;
+package spectrum.visualization;
 
 import java.awt.Color;
-import static processing.core.PApplet.map;
-import static processing.core.PConstants.CLOSE;
-import static processing.core.PConstants.TRIANGLE_STRIP;
+
 
 /**
  * Proudly brought to you by Christophe Bordier 
@@ -26,7 +24,7 @@ public class ThreeDimensionSpectrumTriangles extends ComputeVisualSpectrum {
         float brightness = 1f; //brightness
         for(int i=1; i<fullMatrix.length-fftLogSpectrumTotalLength; i++){
             float color_input = (fullMatrix[i].x);
-            float color_rescale = map(color_input, 0,fftLogSpectrumTotalLength*X_AXIS_SCALE, 0, 1);
+            float color_rescale = map(color_input, 0,fftLogSpectrumTotalLength*fftLog.avgSize()*X_AXIS_SCALE, 0, 1);
             Color myRGBColor = Color.getHSBColor(color_rescale, saturation, brightness);
             if((i+1)%fftLogSpectrumTotalLength != 0){
                 beginShape(TRIANGLE_STRIP);
