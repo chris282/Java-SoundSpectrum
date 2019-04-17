@@ -72,8 +72,8 @@ public abstract class ComputeVisualSpectrum extends PApplet {
                 System.out.println("Setting up spectrum visualization in SMALL mode");
                 size(700, 360, P3D);
                 X_AXIS_SCALE=1.5f;
-                Y_AXIS_SCALE=8;
-                Z_AXIS_SCALE=12.0f;
+                Y_AXIS_SCALE=10.0f;
+                Z_AXIS_SCALE=14.0f;
                 TOTAL_TRACE_LENGTH=300;
                 logAveragesMinBandwidth=100;
                 logAveragesBandsPerOctave=6;
