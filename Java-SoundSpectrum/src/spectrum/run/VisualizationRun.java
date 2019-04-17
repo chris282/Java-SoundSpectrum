@@ -35,8 +35,8 @@ public class VisualizationRun {
 		List<String> playableMusicFileList=musicPlayList(targetPlaylistFolderName);
 		activeFile=playableMusicFileList.get(0);
 		//simpleDisplay();
-		fourWindowsVisualizationDisplay();
-		//smallFourWindowsVisualizationDisplay();
+		//fourWindowsVisualizationDisplay();
+		smallFourWindowsVisualizationDisplay();
 	}   
 
 	public static void simpleDisplay(){

@@ -17,23 +17,24 @@ import static processing.core.PConstants.P3D;
  * Please help me by contributing to the same project in Javascript light client with Angular and ThreeJs !
  * https://github.com/chris282/JS-SoundSpectrum
  *
- * see this documentation page : https://processing.github.io/processing-javadocs/core/index.html?processing/core/PApplet.html
+ * @see this documentation page : https://processing.github.io/processing-javadocs/core/index.html?processing/core/PApplet.html
+ * @see this documentation page : http://code.compartmental.net/minim/javadoc/ddf/minim/analysis/FFT.html
  */
 public abstract class ComputeVisualSpectrum extends PApplet {
     
     float x,y,z;
-    FFT fftLog; //see this page : http://code.compartmental.net/minim/javadoc/ddf/minim/analysis/FFT.html
+    FFT fftLog;
     Minim minim;
     AudioPlayer audioplayer;
     int TOTAL_TRACE_LENGTH=800;
     int logAveragesMinBandwidth=100;
     int logAveragesBandsPerOctave=12;
-    float X_AXIS_SCALE=1.0f;//! il existe un lien entre X_AXIS_SCALE et le deuxwieme paramètre de fftLog.logAverages()
+    float X_AXIS_SCALE=1.0f;
     float Y_AXIS_SCALE=1.0f;
     float Z_AXIS_SCALE=1.0f;
     PVector[] tempMatrix;
     PVector[] fullMatrix;
-    static VisualizationMode visualizationMode=VisualizationMode.FULLSCREEN; //default is fullScreen visualiaztion
+    static VisualizationMode visualizationMode=VisualizationMode.FULLSCREEN; //default is fullScreen visualization
     
     @Override
     public final void settings() {
@@ -72,11 +73,11 @@ public abstract class ComputeVisualSpectrum extends PApplet {
                 System.out.println("logAveragesBandsPerOctave="+logAveragesBandsPerOctave);
                 break;
             case SMALLEST:
-                System.out.println("Setting up spectrum visualization in SMALLEST mode");
-                size(240, 180, P3D);
-                X_AXIS_SCALE=1.0f;
+                System.out.println("Setting up spectrum visualization in SMALL mode");
+                size(360, 240, P3D);
+                X_AXIS_SCALE=0.8f;
                 Y_AXIS_SCALE=8;
-                Z_AXIS_SCALE=10;
+                Z_AXIS_SCALE=4;
                 TOTAL_TRACE_LENGTH=300;
                 logAveragesMinBandwidth=100;
                 logAveragesBandsPerOctave=6;
@@ -130,7 +131,8 @@ public abstract class ComputeVisualSpectrum extends PApplet {
                 //camera(1800,(y+900),-1000,0,y-(TOTAL_TRACE_LENGTH*4),700,0,0,1);
                 break;
             case SMALLEST:
-                camera((x+1000),(y+0)-(TOTAL_TRACE_LENGTH*4),-1200,0,y-(TOTAL_TRACE_LENGTH*4),0,0,0,1);
+                camera(750,(y+1100),-1100,750,y-(TOTAL_TRACE_LENGTH*4),0,0,0,1);
+                //camera((x+1000),(y+0)-(TOTAL_TRACE_LENGTH*4),-1200,0,y-(TOTAL_TRACE_LENGTH*4),0,0,0,1);
                 break;
             default:
                 break;
@@ -162,10 +164,10 @@ public abstract class ComputeVisualSpectrum extends PApplet {
      */
     protected final void fillTempMatrix(){
         for(int i = 0; i < fftLog.avgSize(); i++){ //i va de 0 a 40
-            x = (float) (i*fftLog.getBandWidth()*X_AXIS_SCALE);
+            x = (float) (i*fftLog.avgSize()*X_AXIS_SCALE);
             y = (frameCount)*Y_AXIS_SCALE;
             z =(-fftLog.getAvg(i)*Z_AXIS_SCALE);
-            //System.out.println("x="+x);
+            System.out.println("x="+x);
             //System.out.println("y="+y);
             //System.out.println("z="+z);
             tempMatrix[i].x=x;
