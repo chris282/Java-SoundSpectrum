@@ -35,7 +35,8 @@ public class VisualizationRun {
 		List<String> playableMusicFileList=musicPlayList(targetPlaylistFolderName);
 		activeFile=playableMusicFileList.get(0);
 		//simpleDisplay();
-		fourWindowsVisualizationDisplay();
+		twoWindowsVisualizationDisplay();
+                //fourWindowsVisualizationDisplay();
 		//smallFourWindowsVisualizationDisplay();
 	}   
 
@@ -44,6 +45,12 @@ public class VisualizationRun {
 		ThreeDimensionSpectrumTriangles.main(new String[] { "spectrum.visualization.ThreeDimensionSpectrumTriangles" });
 	}
 	
+        public static void twoWindowsVisualizationDisplay(){
+		ComputeVisualSpectrum.setVisualizationMode(VisualizationMode.SMALL);
+		ThreeDimensionSpectrumTriangles.main(new String[] { "spectrum.visualization.ThreeDimensionSpectrumTriangles" });
+		ThreeDimensionSpectrumLines.main(new String[] { "spectrum.visualization.ThreeDimensionSpectrumLines" });
+	}
+        
 	public static void fourWindowsVisualizationDisplay(){
 		ComputeVisualSpectrum.setVisualizationMode(VisualizationMode.SMALL);
 		TwoDimensionSpectrum.main(new String[] { "spectrum.visualization.TwoDimensionSpectrum" });
