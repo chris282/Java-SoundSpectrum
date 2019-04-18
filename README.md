@@ -18,4 +18,5 @@ Functionallities TODO (HELP and contributors WANTED!) :
    
 Processing libs forums : https://discourse.processing.org/t/sharing-minimaslit-project-to-do-a-3d-sound-spectrum-visualiazer/9876
 See this documentation page : http://code.compartmental.net/minim/javadoc/ddf/minim/analysis/FFT.html
+
 Christophe Bordier, Toulouse,  France
