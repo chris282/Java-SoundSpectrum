@@ -42,7 +42,6 @@ public class VisualizationParameters {
         switch (_visualizationMode){
             case FULLSCREEN:
                 System.out.println("Setting up spectrum visualization in FULLSCREEN mode");
-                //size(1920, 1080,P3D);
                 windowWidth=1920;
                 windowHeight=1080;
                 X_AXIS_SCALE=0.35f;
@@ -54,7 +53,6 @@ public class VisualizationParameters {
                 break;
             case MEDIUM:
                 System.out.println("Setting up spectrum visualization in SMALL mode");
-                //size(900, 480, P3D);
                 windowWidth=900;
                 windowHeight=480;
                 X_AXIS_SCALE=1.5f;
@@ -69,8 +67,7 @@ public class VisualizationParameters {
                 break;
             case SMALL:
                 System.out.println("Setting up spectrum visualization in SMALL mode");
-                //size(700, 360, P3D);
-                windowWidth=700;
+                windowWidth=850;
                 windowHeight=360;
                 X_AXIS_SCALE=0.1f;
                 Y_AXIS_SCALE=10.0f;
@@ -84,7 +81,6 @@ public class VisualizationParameters {
                 break;
             case SMALLEST:
                 System.out.println("Setting up spectrum visualization in SMALL mode");
-                //size(360, 240, P3D);
                 windowWidth=360;
                 windowHeight=240;
                 X_AXIS_SCALE=1.2f;
@@ -116,7 +112,6 @@ public class VisualizationParameters {
             case SMALL_WITH_RESCALE :
                 System.out.println("Setting up spectrum visualization in SMALL mode");
                 MANUAL_FREQUENCY_RESCALE=true;
-                //size(700, 360, P3D);
                 windowWidth=700;
                 windowHeight=360;
                 X_AXIS_SCALE=0.1f;
