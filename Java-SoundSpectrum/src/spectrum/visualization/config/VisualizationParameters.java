@@ -67,11 +67,11 @@ public class VisualizationParameters {
                 break;
             case SMALL:
                 System.out.println("Setting up spectrum visualization in SMALL mode");
-                windowWidth=850;
+                windowWidth=880;
                 windowHeight=360;
                 X_AXIS_SCALE=0.1f;
-                Y_AXIS_SCALE=10.0f;
-                Z_AXIS_SCALE=12.5f;
+                Y_AXIS_SCALE=25.0f;
+                Z_AXIS_SCALE=10.5f;
                 TOTAL_TRACE_LENGTH=100;
                 logAveragesMinBandwidth=100;
                 logAveragesBandsPerOctave=22;

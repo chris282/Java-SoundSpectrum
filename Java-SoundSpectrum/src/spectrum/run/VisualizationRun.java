@@ -34,8 +34,8 @@ public class VisualizationRun {
         //fullScreenVisualizationDisplay();
         //smallSimpleWindowVisualizationDisplay();
         //simpleDisplay();
-        twoWindowsVisualizationDisplay();
-//fourWindowsVisualizationDisplay();
+        //twoWindowsVisualizationDisplay();
+    fourWindowsVisualizationDisplay();
 //twoWindowsVisualizationDisplay();
 //fourWindowsVisualizationDisplay();
 //smallFourWindowsVisualizationDisplay();
