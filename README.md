@@ -20,3 +20,4 @@ Processing libs forums : https://discourse.processing.org/t/sharing-minimaslit-p
 See this documentation page : http://code.compartmental.net/minim/javadoc/ddf/minim/analysis/FFT.html
 
 Christophe Bordier, Toulouse,  France
+Linkedin profile : https://www.linkedin.com/in/christophe-bordier-01743779/
