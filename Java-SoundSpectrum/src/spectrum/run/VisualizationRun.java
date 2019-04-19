@@ -10,7 +10,8 @@ import spectrum.visualization.ThreeDimensionSpectrumCloudPoints;
 import spectrum.visualization.ThreeDimensionSpectrumLines;
 import spectrum.visualization.ThreeDimensionSpectrumTriangles;
 import spectrum.visualization.TwoDimensionSpectrum;
-import spectrum.visualization.VisualizationMode;
+import spectrum.visualization.config.VisualizationMode;
+import spectrum.visualization.config.VisualizationParameters;
 
 /**
  * Proudly brought to you by Christophe Bordier
@@ -28,35 +29,30 @@ public class VisualizationRun {
 	public static  String activeFile;
 
 	public static void main(String args[]){
-		String userHome=System.getProperty("user.home");
-		String windowsDirectorySeparator="\\";
-		String windowsMusicFolder=userHome+windowsDirectorySeparator+"Music";
-		String targetPlaylistFolderName=windowsMusicFolder+windowsDirectorySeparator+myFolder;
-		List<String> playableMusicFileList=musicPlayList(targetPlaylistFolderName);
+		List<String> playableMusicFileList=musicPlayList(musicFolderPath(myFolder));
 		activeFile=playableMusicFileList.get(0);
 		//fullScreenVisualizationDisplay();
 		//smallSimpleWindowVisualizationDisplay();
 		//simpleDisplay();
-		//fourWindowsVisualizationDisplay();
-		//twoWindowsVisualizationDisplay();
 		fourWindowsVisualizationDisplay();
+		//twoWindowsVisualizationDisplay();
+		//fourWindowsVisualizationDisplay();
 		//smallFourWindowsVisualizationDisplay();
 	}
 
 	public static void simpleDisplay(){
-		ComputeVisualSpectrum.setVisualizationMode(VisualizationMode.SMALL);
-		ComputeVisualSpectrum.setMANUAL_FREQUENCY_RESCALE(true);
+		ComputeVisualSpectrum.setParameters(new VisualizationParameters(VisualizationMode.SMALL));
 		ThreeDimensionSpectrumTriangles.main(new String[] { "spectrum.visualization.ThreeDimensionSpectrumTriangles" });
 	}
 
 	public static void twoWindowsVisualizationDisplay(){
-		ComputeVisualSpectrum.setVisualizationMode(VisualizationMode.SMALL);
+		ComputeVisualSpectrum.setParameters(new VisualizationParameters(VisualizationMode.SMALL));
 		ThreeDimensionSpectrumTriangles.main(new String[] { "spectrum.visualization.ThreeDimensionSpectrumTriangles" });
 		ThreeDimensionSpectrumLines.main(new String[] { "spectrum.visualization.ThreeDimensionSpectrumLines" });
 	}
 
 	public static void fourWindowsVisualizationDisplay(){
-		ComputeVisualSpectrum.setVisualizationMode(VisualizationMode.SMALL);
+		ComputeVisualSpectrum.setParameters(new VisualizationParameters(VisualizationMode.SMALL));
 		TwoDimensionSpectrum.main(new String[] { "spectrum.visualization.TwoDimensionSpectrum" });
 		ThreeDimensionSpectrumCloudPoints.main(new String[] { "spectrum.visualization.ThreeDimensionSpectrumCloudPoints" });
 		ThreeDimensionSpectrumTriangles.main(new String[] { "spectrum.visualization.ThreeDimensionSpectrumTriangles" });
@@ -64,8 +60,7 @@ public class VisualizationRun {
 	}
 
 	public static void smallFourWindowsVisualizationDisplay(){
-		ComputeVisualSpectrum.setVisualizationMode(VisualizationMode.SMALLEST);
-		ComputeVisualSpectrum.setMANUAL_FREQUENCY_RESCALE(false);
+		ComputeVisualSpectrum.setParameters(new VisualizationParameters(VisualizationMode.SMALLEST));
 		TwoDimensionSpectrum.main(new String[] { "spectrum.visualization.TwoDimensionSpectrum" });
 		ThreeDimensionSpectrumCloudPoints.main(new String[] { "spectrum.visualization.ThreeDimensionSpectrumCloudPoints" });
 		ThreeDimensionSpectrumTriangles.main(new String[] { "spectrum.visualization.ThreeDimensionSpectrumTriangles" });
@@ -73,13 +68,13 @@ public class VisualizationRun {
 	}
 
 	public static void smallSimpleWindowVisualizationDisplay(){
-		ComputeVisualSpectrum.setVisualizationMode(VisualizationMode.SMALLEST);
+		ComputeVisualSpectrum.setParameters(new VisualizationParameters(VisualizationMode.SMALLEST));
 		ThreeDimensionSpectrumTriangles.main(new String[] { "spectrum.visualization.ThreeDimensionSpectrumTriangles" });
 	}
 
 	public static void fullScreenVisualizationDisplay(){
-		ComputeVisualSpectrum.setVisualizationMode(VisualizationMode.FULLSCREEN);
-		ComputeVisualSpectrum.setMANUAL_FREQUENCY_RESCALE(false);
+		ComputeVisualSpectrum.setParameters(new VisualizationParameters(VisualizationMode.FULLSCREEN));
+		//ComputeVisualSpectrum.setMANUAL_FREQUENCY_RESCALE(false);
 		ThreeDimensionSpectrumTriangles.main(new String[] { "spectrum.visualization.ThreeDimensionSpectrumTriangles" });
 	}
 
@@ -101,5 +96,12 @@ public class VisualizationRun {
 		}
 		return musicPlayListResult;
 	}
-
+            
+        public static String musicFolderPath(String musicSubFolder){
+            String userHome=System.getProperty("user.home");
+		String windowsDirectorySeparator="\\";
+		String windowsMusicFolder=userHome+windowsDirectorySeparator+"Music";
+		String targetPlaylistFolderName=windowsMusicFolder+windowsDirectorySeparator+musicSubFolder;
+                return targetPlaylistFolderName;
+        }
 }

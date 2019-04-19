@@ -20,7 +20,7 @@ public class ThreeDimensionSpectrumCloudPoints extends ComputeVisualSpectrum {
         float brightness = 0.9f; //brightness
         for(int i=0; i<fullMatrix.length; i++){
             float color_input = (fullMatrix[i].x);    
-            float color_rescale = map(color_input, 0,fftLogSpectrumTotalLength*fftLog.avgSize()*X_AXIS_SCALE, 0, 1);
+            float color_rescale = map(color_input, 0,fftLogSpectrumTotalLength*fftLog.avgSize()*super.parameters.getX_AXIS_SCALE(), 0, 1);
             Color myRGBColor = Color.getHSBColor(color_rescale, saturation, brightness);
             point(fullMatrix[i].x, fullMatrix[i].y, fullMatrix[i].z);       
             stroke(myRGBColor.getRed(),myRGBColor.getGreen(), myRGBColor.getBlue());
